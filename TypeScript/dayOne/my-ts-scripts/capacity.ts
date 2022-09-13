@@ -1,3 +1,4 @@
+import readline from "readline-sync"
 const unit = ['kl', 'hl', 'dal', 'l', 'dl', 'cl', 'ml']
 
 function convertCapacity(value: number, fromUnit: string, toUnit: string): any {

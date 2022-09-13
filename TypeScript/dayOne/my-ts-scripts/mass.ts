@@ -1,3 +1,4 @@
+import readline from "readline-sync"
 const massUnits = ['kg', 'hg', 'dag', 'g', 'dg', 'cg', 'cg', 'mg']
 
 function convertMass(value: number, fromUnit: string, toUnit: string): any {

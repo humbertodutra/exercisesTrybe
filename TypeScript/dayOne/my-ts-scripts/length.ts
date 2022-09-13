@@ -1,3 +1,5 @@
+import readline from "readline-sync"
+
 const unitsDistance = ["km", "hm", "dam", "m", "dm", "cm", "mm"];
 
 function convertDistance(value: number, fromUnit: string, toUnit: string): any {
