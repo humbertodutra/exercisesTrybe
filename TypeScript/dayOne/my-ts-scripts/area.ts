@@ -1,6 +1,6 @@
 const unitsArea = ["km²", "hm²", "dam²", "m²", "dm²", "cm²", "mm²"];
 
-function convert(value: number, fromUnit: string, toUnit: string): number {
+function convertArea(value: number, fromUnit: string, toUnit: string): number {
 
     const fromIndex = unitsArea.indexOf(fromUnit);
 
