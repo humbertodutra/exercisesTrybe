@@ -20,6 +20,13 @@ class UserController {
 
         res.status(StatusCodes.OK).json(user);
     }
+
+    public createNewUser = async(req: Request, res: Response) => {
+        const user = req.body
+
+        const userCreated = await this.userService.createNewUser(user)
+        res.status(StatusCodes.CREATED).json(userCreated);
+    }
 }
 
 export default UserController

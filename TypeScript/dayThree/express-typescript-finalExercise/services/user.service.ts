@@ -20,6 +20,10 @@ class UserService {
         return user
     }
 
+    public async createNewUser(user: User): Promise<User>{
+        return this.model.createNewUser(user)
+    }
+
 }
 
 export default UserService;

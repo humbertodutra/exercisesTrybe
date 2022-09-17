@@ -29,6 +29,11 @@ class UserController {
             }
             res.status(http_status_codes_1.StatusCodes.OK).json(user);
         });
+        this.createNewUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const user = req.body;
+            const userCreated = yield this.userService.createNewUser(user);
+            res.status(http_status_codes_1.StatusCodes.CREATED).json(userCreated);
+        });
     }
 }
 exports.default = UserController;

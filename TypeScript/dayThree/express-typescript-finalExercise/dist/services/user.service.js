@@ -31,5 +31,10 @@ class UserService {
             return user;
         });
     }
+    createNewUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.model.createNewUser(user);
+        });
+    }
 }
 exports.default = UserService;
