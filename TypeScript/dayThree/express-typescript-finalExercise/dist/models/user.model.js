@@ -33,7 +33,7 @@ class UserModel {
     createNewUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, email, password } = user;
-            const newUser = yield this.connection.execute('INSERT INTO Users (name, email, password) VALUES (?,?)', [name, email, password]);
+            const newUser = yield this.connection.execute('INSERT INTO Users (name, email, password) VALUES (?, ?, ?)', [name, email, password]);
             const [dataInserted] = newUser;
             const { insertId } = dataInserted;
             return Object.assign({ id: insertId }, user);

@@ -28,7 +28,7 @@ export default class UserModel {
     public async createNewUser(user: User): Promise<User>{
         const { name, email, password } = user;
         const newUser = await this.connection.execute<ResultSetHeader>(
-            'INSERT INTO Users (name, email, password) VALUES (?,?)',
+            'INSERT INTO Users (name, email, password) VALUES (?, ?, ?)',
             [name, email, password]
         );
 
