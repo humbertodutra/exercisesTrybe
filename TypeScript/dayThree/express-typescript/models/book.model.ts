@@ -20,13 +20,9 @@ export default class BookModel {
   public async getById(id: number): Promise<Book> {
 
     const result = await this.connection
-
       .execute('SELECT * FROM books WHERE id=?', [id]);
-
     const [rows] = result;
-
     const [book] = rows as Book[];
-
     return book;
 
   }
@@ -40,5 +36,21 @@ export default class BookModel {
     const [dataInserted] = result;
     const { insertId } = dataInserted;
     return { id: insertId, ...book };
+  }
+
+  public async update(id: number, book: Book) {
+    const { title, price, author, isbn } = book;
+    await this.connection.execute(
+      'UPDATE books SET title=?, price=?, author=?, isbn=? WHERE id=?',
+      [title, price, author, isbn, id]
+
+    );
+  }
+
+  public async remove(id: number) {
+    await this.connection.execute(
+      'DELETE FROM books WHERE id=?',
+      [id],
+    );
   }
 }
