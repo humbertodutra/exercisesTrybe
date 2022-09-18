@@ -11,4 +11,6 @@ const usersController = new users_controller_1.default();
 router.get('/users', usersController.getAll);
 router.get('/users/:id', usersController.getById);
 router.post('/users', user_middlewares_1.default, usersController.createNewUser);
+router.put('/users/:id', user_middlewares_1.default, usersController.updateUser);
+router.delete('/users/:id', user_middlewares_1.default, usersController.removeUser);
 exports.default = router;

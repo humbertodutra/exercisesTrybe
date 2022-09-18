@@ -36,4 +36,30 @@ export default class UserModel {
         const { insertId } = dataInserted;
         return {id: insertId, ...user}
     }
+
+    public async updateUser(id: number, user: User): Promise<User>{
+        const {name, email, password } = user;
+
+        await this.connection.execute(
+            'Update Users SET name = ?, email = ?, password = ?',[name, email, password]
+        );
+
+        const editedUser = {id, name, email, password};
+
+        return editedUser;
+    }
+
+
+    public async removeUser(id:number): Promise<User | null>{
+        const userToBeDeleted = await this.getById(id);
+        if (!userToBeDeleted) return null;
+
+        await this.connection.execute(
+            'DELETE FROM Users WHERE id = ?',[id]
+        )
+
+        return userToBeDeleted
+    }
+
+
 }

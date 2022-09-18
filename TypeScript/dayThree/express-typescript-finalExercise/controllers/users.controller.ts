@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { STATUS_CODES } from "http";
 import { StatusCodes } from "http-status-codes";
 import UserService from "../services/user.service";
 
@@ -26,6 +27,24 @@ class UserController {
 
         const userCreated = await this.userService.createNewUser(user)
         res.status(StatusCodes.CREATED).json(userCreated);
+    }
+
+    public updateUser = async (req: Request, res: Response) => {
+        const userData = req.body
+        const id = parseInt(req.params.id)
+
+        const userUpdated = await this.userService.updateUser(id, userData);
+
+        res.status(StatusCodes.OK).json(userUpdated)
+    }
+
+    public removeUser = async (req: Request, res: Response) => {
+        const id = parseInt(req.params.id);
+
+        const removeUser = await this.userService.deleteUser(id);
+
+
+        res.status(StatusCodes.OK).json(removeUser)
     }
 }
 

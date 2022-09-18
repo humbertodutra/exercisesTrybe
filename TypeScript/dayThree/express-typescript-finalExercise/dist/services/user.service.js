@@ -36,5 +36,15 @@ class UserService {
             return this.model.createNewUser(user);
         });
     }
+    updateUser(id, user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.model.updateUser(id, user);
+        });
+    }
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.model.removeUser(id);
+        });
+    }
 }
 exports.default = UserService;

@@ -24,6 +24,14 @@ class UserService {
         return this.model.createNewUser(user)
     }
 
+    public async updateUser(id: number, user: User): Promise<User>{
+        return this.model.updateUser(id, user)
+    }
+
+    public async deleteUser(id: number): Promise<User | null>{
+        return this.model.removeUser(id)
+    }
+
 }
 
 export default UserService;

@@ -34,6 +34,17 @@ class UserController {
             const userCreated = yield this.userService.createNewUser(user);
             res.status(http_status_codes_1.StatusCodes.CREATED).json(userCreated);
         });
+        this.updateUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const userData = req.body;
+            const id = parseInt(req.params.id);
+            const userUpdated = yield this.userService.updateUser(id, userData);
+            res.status(http_status_codes_1.StatusCodes.OK).json(userUpdated);
+        });
+        this.removeUser = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = parseInt(req.params.id);
+            const removeUser = yield this.userService.deleteUser(id);
+            res.status(http_status_codes_1.StatusCodes.OK).json(removeUser);
+        });
     }
 }
 exports.default = UserController;

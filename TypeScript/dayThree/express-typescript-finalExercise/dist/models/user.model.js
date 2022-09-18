@@ -39,5 +39,22 @@ class UserModel {
             return Object.assign({ id: insertId }, user);
         });
     }
+    updateUser(id, user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { name, email, password } = user;
+            yield this.connection.execute('Update Users SET name = ?, email = ?, password = ?', [name, email, password]);
+            const editedUser = { id, name, email, password };
+            return editedUser;
+        });
+    }
+    removeUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const userToBeDeleted = yield this.getById(id);
+            if (!userToBeDeleted)
+                return null;
+            yield this.connection.execute('DELETE FROM Users WHERE id = ?', [id]);
+            return userToBeDeleted;
+        });
+    }
 }
 exports.default = UserModel;
