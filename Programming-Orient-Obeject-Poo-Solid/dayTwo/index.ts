@@ -2,6 +2,7 @@ import Person from "./Person.class";
 import Student from "./Student.class";
 import Employee from "./Employee.interface";
 import Subject from "./Subject.class";
+import Teacher from "./Teacher.class";
 
 ///exer 1
 const diegoTardelli = new Person('Diego Tardelli', new Date('1980/01/01'))
@@ -44,8 +45,13 @@ console.log(testInterfaceEmployee);
 
 const history = new Subject('History')
 const science = new Subject('Science')
+const math = new Subject('Math')
 console.log(history.name)
 console.log(science)
 
+/// exer5
 
+const Neymar = new Teacher('Neymar Junior', new Date('1980/03/30'), 200000000, math)
+const Messi = new Teacher('Lionel Messi',new Date('1980/04/05'), 81239821938, history)
 
+console.log(Neymar)
