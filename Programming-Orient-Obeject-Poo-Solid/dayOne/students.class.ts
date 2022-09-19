@@ -31,14 +31,32 @@ export default class Student{
         }
         this._workGrades = value;
     }
+
+    sumGrades():number {
+        return [...this._examGrades, ...this._workGrades]
+            .reduce((prevNote, note) => {
+                const totalNote = note + prevNote
+                return totalNote
+            },0);
+    }
+
+    sumAvgGrade(): number {
+        const totalGrade = this.sumGrades();
+        const divider = this._examGrades.length + this._workGrades.length;
+        const final =  Math.round(totalGrade/divider)
+        return final;
+    }
 }
 
 
 const personOne = new Student('202001011', 'Ronaldinho Gaucho');
-const studentOneGrades = [10,9,6,4];
+const studentOneGrades = [10, 9, 6, 4];
 const studentOneWorkGrades = [5,9];
 
 personOne.examGrades = studentOneGrades;
 personOne.workGrades = studentOneWorkGrades;
 
-console.log(personOne);
+console.log(personOne.sumGrades())
+console.log(personOne.sumAvgGrade());
+
+
