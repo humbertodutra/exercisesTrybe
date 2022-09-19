@@ -11,3 +11,4 @@ const dessert = new ItemOrdered('Petit Gateu', 35);
 const newOrder = new Order(costumer, [filetMignon, juice, dessert], 'creditCard', 10)
 
 console.log(newOrder);
+console.log(`The value of your order is $${newOrder.calculateTotal()} and with discount the total is: $${newOrder.calculateTotalWithDiscout()}`)

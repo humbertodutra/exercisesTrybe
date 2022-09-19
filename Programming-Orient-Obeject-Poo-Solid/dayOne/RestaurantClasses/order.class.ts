@@ -29,7 +29,7 @@ export default class Order {
         this._costumer = value;
     }
 
-    get item(): ItemOrdered[]{
+    get items(): ItemOrdered[]{
         return this._items
     }
 
@@ -53,5 +53,21 @@ export default class Order {
        this._discount = value;
     
       }
+
+    calculateTotal(): number{
+        return this.items
+            .reduce((prevValue, item) => {
+                const total = prevValue + item.price
+                return total
+            }, 0);
+    }
+
+    calculateTotalWithDiscout():number{
+       const total = this.calculateTotal();
+       const discount = this.discount
+       const totalDiscount =  (total/100) * discount
+       const totalWithDiscount = total - totalDiscount;
+       return totalWithDiscount;
+    }
 }
 
