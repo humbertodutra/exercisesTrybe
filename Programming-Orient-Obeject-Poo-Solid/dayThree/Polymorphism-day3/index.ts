@@ -5,15 +5,17 @@ import Teacher from './Teacher.class'
 import Student from './Student.class'
 import Subject from "./Subject.class";
 
-// tentar fazer isso agora deve gerar um erro
-// já que nossa classe se tornou abstrata e não podemos criar instânicas de classes abstratas
-const pessoa = new Person('Carolina da Silva', new Date('2005/03/17'));
+// ./index.ts
 
-// isso não deve gerar nenhum erro
 const carolina = new Student('Carolina da Silva', new Date('2005/03/17'));
+const lucas = new Student('Lucas Peixoto Salgueiro', new Date('2006/07/19'));
 console.log(carolina);
+console.log(lucas);
 
 const math = new Subject('Matemática');
-// isso também não deve gerar nenhum erro
+const history = new Subject('História');
+
 const marta = new Teacher('Marta da Silva', new Date('1980/03/30'), 2000, math);
+const joao = new Teacher('João Antônio da Costa', new Date('1982/04/21'), 2000, history);
 console.log(marta);
+console.log(joao);

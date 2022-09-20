@@ -1,6 +1,7 @@
 import Person from "./Person.class";
+import Enrollable from './Enrollable';
 
-export default class Student extends Person {
+export default class Student extends Person implements Enrollable {
   private _enrollment = String();
   private _examsGrades: number[] = [];
   private _worksGrades: number[] = [];
@@ -39,10 +40,21 @@ export default class Student extends Person {
 
     this._worksGrades = value;
   }
+  sumGrades(): number {
 
+    return [...this.examsGrades, ...this.worksGrades]
+
+      .reduce((previousNote, note) => note + previousNote, 0);
+
+  }
+
+  sumAverageGrade(): number {
+    const sumGrades = this.sumGrades();
+    const divider = this.examsGrades.length + this.worksGrades.length;
+    return Math.round(sumGrades / divider);
+  }
   generateEnrollment(): string {
     const randomStr = String(Date.now() * (Math.random() + 1)).replace(/\W/g, '');
-
     return `STU${randomStr}`;
   }
 }
